@@ -29,5 +29,33 @@ Antes de começar, você precisará de:
 
 1. Clone o repositório:
    ```bash
-   git clone [https://github.com/GuDevBot/utilities.doc_reader.git](https://github.com/GuDevBot/utilities.doc_reader.git)
-   cd utilities.doc_reader
+   git clone https://github.com/GuDevBot/utilities.doc_reader.git
+   cd utilities.doc_reader 
+   ```
+2. Crie um arquivo .env na raíz do projeto:
+   ```bash
+   AI_KEY=seu_token_da_mistral_aqui
+   TARGET_URL=https://docs.python.org/3/library/
+   ANONYMIZED_TELEMETRY=False
+   ```
+
+## 🏃 Como Rodar
+
+Execute o seguinte comando no terminal:
+   ```
+   docker compose run --service-ports rag-crawler
+   ```
+
+O sistema irá:
+   1. Mapear a URL fornecida.
+   2. Baixar e processar o conteúdo.
+   3. Criar o banco de dados vetorial localmente.
+   4. Iniciar o chat interativo no terminal.
+
+## 📂 Persistência de Dados
+
+O banco de dados gerado é armazenado na pasta local ./chroma_db_data. Isso garante que:
+   - Você não precise indexar o site toda vez que iniciar o programa.
+   - O histórico de documentos persista mesmo após desligar o container Docker.
+
+## Desenvolvido por Gustavo Brandi Alves
