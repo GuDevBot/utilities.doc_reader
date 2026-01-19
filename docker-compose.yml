@@ -1,0 +1,11 @@
+services:
+  rag-crawler:
+    build: .
+    container_name: ia_busca_rag
+    env_file:
+      - .env
+    volumes:
+      - ./chroma_db_data:/app/chroma_db
+      - .:/app
+    stdin_open: true 
+    tty: true
